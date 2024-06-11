@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.5.3/dist/web3.min.js"></script>
+    <title>User Settings - HappyPaws</title>
+    <link rel="stylesheet" href="navbar.css">
+    <link rel="stylesheet" href="user-settings.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <nav class="sidebar close">
+        <header>
+            <div class="image-text" onclick="goTo()">
+                <span class="image">
+                    <img src="LOGO.png" alt="logo">
+                </span>
+                <div class="text header-text">
+                    <span class="name">Vatan Happy Paws</span>
+                    <span class="profession">Veterenary Hospital</span>
+                </div>
+            </div>
+            <i class='bx bx-chevron-right toggle'></i>
+        </header>
+
+        <div class="menu-bar">
+            <div class="menu">
+                <ul class="menu-links">
+                    <li class="nav-link">
+                        <a href="main.html" id="main">
+                            <i class="bx bx-home-alt icon"></i>
+                            <span class="text nav-text">Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="owner-management.html" id="ownerManagement" >
+                            <i class='bx bxs-user-badge icon' ></i>
+                            <span class="text nav-text">Owner Management</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="pet-management.html" id="petManagement" >
+                            <i class='bx bxs-cat icon' ></i>
+                            <span class="text nav-text">Pet Management</span>
+                        </a>
+                    </li>
+                    <li class="nav-link notifBtn">
+                        <a href="notification.html" id="notification" >
+                            <i class='bx bx-bell icon' ></i>
+                            <span class="text nav-text">Notification</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="about-us.html" id="aboutUs" >
+                            <i class='bx bx-info-circle icon'></i>
+                            <span class="text nav-text">About Us</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a id="accountManagement" class="" href="account-management.html">
+                            <i class='bx bx-group icon'></i>
+                            <span class="text nav-text">Account Management</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="bottom-content">
+                <li class="nav-link">
+                    <a href="user-settings.html" style="background-color: #ff8400">
+                        <i class='bx bx-user-circle icon' style="color: #fff"></i>
+                        <span class="text nav-text" id="userFullName" style="color: #fff"></span>
+                    </a>
+                </li>
+
+                <li class="nav-link">
+                    <a onclick="logout()">
+                        <i class='bx bx-log-out icon'></i>
+                        <span class="text nav-text ">Logout</span>
+                    </a>
+                </li>
+            </div>
+        </div>
+    </nav>
+
+    <section class="home">
+        <div class="text">User Settings</div>
+        <div class="userInformation">
+            <main class="table">
+                <section class="table_header">
+                    <div>
+                        <!-- <h1>User Information</h1> -->
+                        <h1 style="color: #ff8400;" id="userAccount"></h1>
+                    </div>
+                    
+                    <div class="button_container">
+                        <button onclick="openUpdateUserFormModal()">Update</button>
+                    </div>
+                </section>
+                <span class="miniLabel">User Information</span>
+                <section class="table_body">
+                    <div class="form-group">
+                        <label   class="texti" for="surname">Full Name: <span id="fullname"></span></label>
+                      </div>
+                      
+      
+                      <div class="form-group">
+                          <label class="texti" for="address">Address: <span id="address"></span></label>
+                        </div>
+      
+                       <div class="form-group">
+                          <label  class="texti" for="contact">Contact Number: <span id="contact"></span></label>
+                        </div>
+      
+                        <div class="form-group">
+                          <label   class="texti" for="role">Role: <span id="role"></span></label>
+                        </div>
+                </section>
+            </main>
+            <main>
+                <div class="userEntries">
+                    <div id="update-user-form-modal" class="modal userEntryModal updateModal">
+                        <div class="modal-content">
+                            <div class="modalHeader">
+                                <span class="close" onclick="closeUpdateUserFormModal()">&times;</span>
+                                <h2>Update User<h2 id="updateUserHeaderName"></h2></h2>
+                                <input type="hidden" id="usernameHeader">
+                            </div>
+                            <div class="modalContent">
+                                <label for="password">Password:</label>
+                                <input type="password" id="updatepassword" placeholder="Enter password">
+                                <span class="alertUpdatePassword" style="color:red; font-size: 0.8rem"></span>
+                                <section onclick="showPassword()">
+                                    <input type="checkbox" id="pcheckBox"><label for="showPassword">Show Password</label>
+                                </section>
+
+                                <label for="updatefullname">Full Name:</label>
+                                <input type="text" id="updatefullname" placeholder="Enter full name">
+                                <span class="alertUpdateFullName" style="color:red; font-size: 0.8rem"></span>
+
+                                <label for="updateaddress">Address:</label>
+                                <input type="text" id="updateaddress" placeholder="Enter address">
+                                <span class="alertUpdateAddress" style="color:red; font-size: 0.8rem"></span>
+
+                                <label for="updatecontact">Contact Number:</label>
+                                <input type="text" id="updatecontact" placeholder="Enter contact number">
+                                <span class="alertUpdateContact" style="color:red; font-size: 0.8rem"></span>
+                            </div>
+                            <div class="modalFooter">
+                                <button onclick="updateUser()">Confirm</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+        <!-- <div class="backUpManagement">
+            <main>
+                <section class="table_header">
+                    <h1>Back-up Management</h1>
+                </section>
+                <section class="table_body">
+                    <div class="button_containers">
+                        <button type="button">Save Owner Records</button>
+                        <button type="button">Save Pet Records</button>
+                        <button type="button">Save Check-up/Appointment Records</button>
+                    </div>
+                </section>
+                <section class="table_footer">
+
+                </section>
+            </main>
+        </div> -->
+    </section>
+    <script src="navbar.js"></script>
+    <script src="user-settings.js"></script>
+</body>
+</html>

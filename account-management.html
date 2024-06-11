@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.5.3/dist/web3.min.js"></script>
+    <title>Account Management - HappyPaws</title>
+    <link rel="stylesheet" href="navbar.css">
+    <link rel="stylesheet" href="account-management.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <nav class="sidebar close">
+        <header>
+            <div class="image-text" onclick="goTo()">
+                <span class="image">
+                    <img src="LOGO.png" alt="logo">
+                </span>
+                <div class="text header-text">
+                    <span class="name">Vatan Happy Paws</span>
+                    <span class="profession">Veterenary Hospital</span>
+                </div>
+            </div>
+            <i class='bx bx-chevron-right toggle'></i>
+        </header>
+
+        <div class="menu-bar">
+            <div class="menu">
+                <ul class="menu-links">
+                    <li class="nav-link">
+                        <a href="main.html" id="main">
+                            <i class="bx bx-home-alt icon"></i>
+                            <span class="text nav-text">Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="owner-management.html" id="ownerManagement" >
+                            <i class='bx bxs-user-badge icon' ></i>
+                            <span class="text nav-text">Owner Management</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="pet-management.html" id="petManagement" >
+                            <i class='bx bxs-cat icon' ></i>
+                            <span class="text nav-text">Pet Management</span>
+                        </a>
+                    </li>
+                    <li class="nav-link notifBtn">
+                        <a href="notification.html" id="notification" >
+                            <i class='bx bx-bell icon' ></i>
+                            <span class="text nav-text">Notification</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="about-us.html" id="aboutUs" >
+                            <i class='bx bx-info-circle icon'></i>
+                            <span class="text nav-text">About Us</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a id="accountManagement" class="" href="account-management.html" style="background-color: #ff8400">
+                            <i class='bx bx-group icon' style="color: #fff"></i>
+                            <span class="text nav-text" style="color: #fff">Account Management</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="bottom-content">
+                <li class="nav-link">
+                    <a href="user-settings.html">
+                        <i class='bx bx-user-circle icon' ></i>
+                        <span class="text nav-text" id="userFullName"></span>
+                    </a>
+                </li>
+
+                <li class="nav-link">
+                    <a onclick="logout()">
+                        <i class='bx bx-log-out icon'></i>
+                        <span class="text nav-text ">Logout</span>
+                    </a>
+                </li>
+            </div>
+        </div>
+    </nav>
+
+    <section class="home">
+        <div class="text">Account Management</div>
+        <main class="table">
+            <section class="table_header">
+                <h1>User Records</h1>
+                <div class="input-group">
+                    <input type="search" placeholder="Search..." id="searchBar">
+                    <img src="search.png" alt="search" onclick="search()" style="cursor: pointer;">
+                </div>
+                <div class="button_container">
+                    <button onclick="openAddUserFormModal()">Add</button>
+                </div>
+            </section>
+            <section class="table_body">
+                <table id="userTable">
+                    <thead>
+                        <tr>
+                            <th>Id<span class="icon-arrow">&UpArrow;</span></th>
+                            <th>Username<span class="icon-arrow">&UpArrow;</span></th>
+                            <th>Password<span class="icon-arrow">&UpArrow;</span></th>
+                            <th>Full Name<span class="icon-arrow">&UpArrow;</span></th>
+                            <th>User Address<span class="icon-arrow">&UpArrow;</span></th>
+                            <th>Contact<span class="icon-arrow">&UpArrow;</span></th>
+                            <th>Role<span class="icon-arrow">&UpArrow;</span></th>
+                            <th>Action<span class="icon-arrow">&UpArrow;</span></th>
+                        </tr>
+                    </thead>
+                    <tbody id="users">
+                    </tbody>
+                </table>
+            </section>
+        </main>
+        <main>
+            <div class="userEntries">
+                <div id="add-user-form-modal" class="modal userEntryModal addModal">
+                    <div class="modal-content">
+                        <div class="modalHeader">
+                            <span class="close" onclick="closeAddUserFormModal()">&times;</span>
+                            <h2>Add User</h2>
+                        </div>
+                        <div class="modalContent">
+                            <label for="username">Username:</label>
+                            <input type="text" id="username" placeholder="Enter username">
+                            <span class="alertUsername" style="color:red; font-size: 0.8rem"></span>
+        
+                            <label for="surname">Surname:</label>
+                            <input type="text" id="surname" placeholder="Enter surname">
+                            <span class="alertSurname" style="color:red; font-size: 0.8rem"></span>
+        
+                            <label for="firsname">First Name:</label>
+                            <input type="text" id="firstname" placeholder="Enter first name">
+                            <span class="alertFirstName" style="color:red; font-size: 0.8rem"></span>
+        
+                            <label for="address">Address:</label>
+                            <input type="text" id="address" placeholder="Enter address">
+                            <span class="alertAddress" style="color:red; font-size: 0.8rem"></span>
+        
+                            <label for="contact">Contact Number:</label>
+                            <input type="text" id="contact" placeholder="Enter contact number">
+                            <span class="alertContact" style="color:red; font-size: 0.8rem"></span>
+        
+                            <label for="role">Role:</label>
+                            <select id="role">
+                                <option value="0">User</option>
+                                <option value="1">Admin</option>
+                            </select>
+                        </div>
+                        <div class="modalFooter">
+                            <button onclick="createUser()">Confirm</button>
+                        </div>
+                    </div>
+                </div>
+                <div id="update-user-form-modal" class="modal userEntryModal updateModal">
+                    <div class="modal-content">
+                        <div class="modalHeader">
+                            <span class="close" onclick="closeUpdateUserFormModal()">&times;</span>
+                            <h2>Update User<h2 id="updateUserHeaderName"></h2></h2>
+                            <input type="hidden" id="usernameHeader">
+                        </div>
+                        <div class="modalContent">
+                            <label for="password">Password:</label>
+                            <input type="password" id="updatepassword" placeholder="Enter password">
+                            <span class="alertUpdatePassword" style="color:red; font-size: 0.8rem"></span>
+                            <section onclick="showPassword()">
+                                <input type="checkbox" id="pcheckBox"><label for="showPassword">Show Password</label>
+                            </section>
+
+                            <label for="updatefullname">Full Name:</label>
+                            <input type="text" id="updatefullname" placeholder="Enter full name">
+                            <span class="alertUpdateFullName" style="color:red; font-size: 0.8rem"></span>
+                            
+
+                            <label for="updateaddress">Address:</label>
+                            <input type="text" id="updateaddress" placeholder="Enter address">
+                            <span class="alertUpdateAddress" style="color:red; font-size: 0.8rem"></span>
+
+                            <label for="updatecontact">Contact Number:</label>
+                            <input type="text" id="updatecontact" placeholder="Enter contact number">
+                            <span class="alertUpdateContact" style="color:red; font-size: 0.8rem"></span>
+
+                            <label for="updaterole">Role</label>
+                            <select id="updaterole">
+                                <option value="0">User</option>
+                                <option value="1">Admin</option>
+                            </select>
+                        </div>
+                        <div class="modalFooter">
+                            <button onclick="updateUser()">Confirm</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </section>
+    <script src="acc-management.js"></script>
+    <script src="navbar.js"></script>
+</body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Management - HappyPaws</title>
+    <link rel="stylesheet" href="navbar.css">
+    <link rel="stylesheet" href="about-us.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <nav class="sidebar close">
+        <header>
+            <div class="image-text" onclick="goTo()">
+                <span class="image">
+                    <img src="LOGO.png" alt="logo">
+                </span>
+                <div class="text header-text">
+                    <span class="name">Vatan Happy Paws</span>
+                    <span class="profession">Veterenary Hospital</span>
+                </div>
+            </div>
+            <i class='bx bx-chevron-right toggle'></i>
+        </header>
+
+        <div class="menu-bar">
+            <div class="menu">
+                <ul class="menu-links">
+                    <li class="nav-link">
+                        <a href="main.html" id="main">
+                            <i class="bx bx-home-alt icon"></i>
+                            <span class="text nav-text">Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="owner-management.html" id="ownerManagement" >
+                            <i class='bx bxs-user-badge icon' ></i>
+                            <span class="text nav-text">Owner Management</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="pet-management.html" id="petManagement" >
+                            <i class='bx bxs-cat icon' ></i>
+                            <span class="text nav-text">Pet Management</span>
+                        </a>
+                    </li>
+                    <li class="nav-link notifBtn">
+                        <a href="notification.html" id="notification" >
+                            <i class='bx bx-bell icon' ></i>
+                            <span class="text nav-text">Notification</span>
+                        </a>
+                    </li>
+                    <li class="nav-link" >
+                        <a href="about-us.html" id="aboutUs" style="background-color: #ff8400">
+                            <i class='bx bx-info-circle icon' style="color: #fff"></i>
+                            <span class="text nav-text" style="color: #fff">About Us</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a id="accountManagement" class="" href="account-management.html">
+                            <i class='bx bx-group icon'></i>
+                            <span class="text nav-text">Account Management</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="bottom-content">
+                <li class="nav-link">
+                    <a href="user-settings.html">
+                        <i class='bx bx-user-circle icon' ></i>
+                        <span class="text nav-text" id="userFullName"></span>
+                    </a>
+                </li>
+
+                <li class="nav-link">
+                    <a onclick="logout()">
+                        <i class='bx bx-log-out icon'></i>
+                        <span class="text nav-text ">Logout</span>
+                    </a>
+                </li>
+            </div>
+        </div>
+    </nav>
+
+    <section class="home">
+        <div class="text">About Us</div>
+        <main class="table">
+            <div class="container">
+                <div class="member">
+                    <img src="loi.jpg" alt="Member 1">
+                    <h2>Angel Lawrence</h2>
+                    <p>Programmer</p>
+                </div>
+                <div class="member">
+                    <img src="gab.jpg" alt="Member 2">
+                    <h2>Gabriel</h2>
+                    <p>Programmer</p>
+                </div>
+                <div class="member">
+                    <img src="matt.jpg" alt="Member 3">
+                    <h2>Eron Matthew</h2>
+                    <p>Programmer</p>
+                </div>
+                <div class="member">
+                    <img src="mark.jpg" alt="Member 4">
+                    <h2>Mark Angelo</h2>
+                    <p>Programmer</p>
+                </div>
+                <br>
+                <br>
+                <br>
+                <p>Copyright 2024 | Vatan Happy Paws Decentralized Data Management System</p>
+            </div>
+        </main>
+    </section>
+
+    
+        
+    
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.5.3/dist/web3.min.js"></script>
+    <script src="navbar.js"></script>
+    <script src="about-us.js"></script>
+</body>
+</html>

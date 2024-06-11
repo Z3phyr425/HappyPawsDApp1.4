@@ -1,0 +1,252 @@
+main.table{
+  width: 35%;
+  height: 40.3vh;
+  background-color: #fff5;
+  margin: 0.5rem;
+
+  box-shadow: 0 .4rem .8rem #0005;
+  border-radius: .8rem;
+  overflow: hidden;
+}
+
+.table_header{
+  width: 100%;
+  height: 10%;
+  background-color: #fff4;
+  padding: 2rem 2rem;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.table_body{
+  width: 95%;
+  max-height: calc(89% - 1.6rem); 
+  background-color: #fff4;
+  height: max-content;
+
+  margin: .8rem auto;
+  border-radius: .6rem;
+  overflow: auto;
+}
+
+.table_body::-webkit-scrollbar{
+  width: 0.5rem;
+  height: 0.5rem;
+}
+
+.table_body::-webkit-scrollbar-thumb{
+  border-radius: 0.5rem;
+  background-color: #0004;
+  visibility: hidden;
+}
+
+.table_body:hover::-webkit-scrollbar-thumb{
+  visibility: visible;
+}
+
+button{
+  background: #0002;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 20rem;
+  margin: 0.2rem;
+  cursor: pointer;
+  transition: .2s ease-in-out;
+}
+
+button:hover{
+  background-color: #ff840066;
+}
+
+.btn1{
+  margin-top: 0.5rem;
+}
+
+.form-group{
+  padding: 1rem;
+}
+
+.miniLabel{
+  position: absolute;
+  left: 2.25%;
+  font-size: 0.9rem;
+  transform: translateY(10%);
+  opacity: 0.5;
+}
+
+.userInformation{
+  width: 100%;
+  display: flex;
+}
+
+
+/* update */
+
+.userEntries{
+  position: absolute;
+  left: 36%;
+  top: 6.8%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  width: 18%;
+  border-radius: 0.8rem;
+}
+
+
+.userEntries input, select{
+  width: 100%;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  border: none;
+  outline: none;
+  background-color: #fff7;
+  transition: .2s ;
+}
+
+.userEntries input:hover{
+  background-color: #fff9;
+  box-shadow: 0 .1rem .4rem #0002;
+}
+
+.userEntries input:focus{
+  background-color: #fffb;
+  box-shadow: 0 .1rem .4rem #0002;
+}
+
+.userEntryModal{
+  border-radius: 0.5rem;
+  margin: 0.5rem;
+  background-color: #fff6;
+  
+  box-shadow: 0 .4rem .8rem #0005;
+}
+
+.userEntries .modalContent{
+  padding: 0.5rem;
+}
+
+.userEntries .modalHeader{
+  background-color: #fff4;
+  padding: 1rem;
+  border-radius: 1rem 1rem 0 0;
+}
+
+.modalHeader .close{
+  transform: translateY(-50%);
+}
+
+.updateModal{
+  transform: translateX(100%);
+  opacity: 0;
+  transition: .5s ease;
+  width: 0;
+  height: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.updateModal.active{
+  width: 100%;
+  line-height: normal;
+  height: min-content;
+  transform: translateX(0);
+  opacity: 1;
+  margin-top: 0.5rem;
+}
+
+.close{
+  font-size: 2rem;
+  float: right;
+  cursor: pointer;
+}
+
+.modalFooter button{
+  float: right;
+}
+
+.modalContent section{
+  display: flex;
+  width: 100%;;
+  cursor: pointer;
+}
+
+.modalContent section input{
+  width: 1rem;
+  margin: 0.5rem;
+}
+
+.modalContent section label{
+  cursor: pointer;
+}
+
+.backUpManagement{
+  position: absolute;
+  bottom: 0;
+  background-color: #fff5;
+  border-radius: 0.8rem;
+  margin: 0.5rem;
+
+  opacity: 0;
+  width: 0;
+
+  transition: 0.5s ease;
+}
+
+.backUpManagement.active{
+  width: 39%;
+  opacity: 1;
+}
+
+.backUpManagement .table_header{
+  border-radius: 0.8rem 0.8rem 0 0;
+  background-color: #fff4;
+}
+
+.backUpManagement .table_body{
+  background-color: #fff4;
+  padding: 0.5rem;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+}
+
+/* update user validation */
+
+/* password */
+.alertUpdatePassword{
+  display: none;
+  }
+  
+  .alertUpdatePassword.show{
+  display: block;
+  }
+  
+  /* alertUpdateFullName */
+  .alertUpdateFullName{
+  display: none;
+  }
+  
+  .alertUpdateFullName.show{
+  display: block;
+  }
+  
+  /* alertUpdateAddress */
+  .alertUpdateAddress{
+  display: none;
+  }
+  
+  .alertUpdateAddress.show{
+  display: block;
+  }
+  
+  /* alertUpdateContact */
+  .alertUpdateContact{
+  display: none;
+  }
+  
+  .alertUpdateContact.show{
+  display: block;
+  }

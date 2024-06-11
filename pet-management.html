@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Management - HappyPaws</title>
+    <link rel="stylesheet" href="navbar.css">
+    <link rel="stylesheet" href="pet-management.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <nav class="sidebar close">
+        <header>
+            <div class="image-text" onclick="goTo()">
+                <span class="image">
+                    <img src="LOGO.png" alt="logo">
+                </span>
+                <div class="text header-text">
+                    <span class="name">Vatan Happy Paws</span>
+                    <span class="profession">Veterenary Hospital</span>
+                </div>
+            </div>
+            <i class='bx bx-chevron-right toggle'></i>
+        </header>
+
+        <div class="menu-bar">
+            <div class="menu">
+                <ul class="menu-links">
+                    <li class="nav-link">
+                        <a href="main.html" id="main">
+                            <i class="bx bx-home-alt icon"></i>
+                            <span class="text nav-text">Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="owner-management.html" id="ownerManagement" >
+                            <i class='bx bxs-user-badge icon' ></i>
+                            <span class="text nav-text">Owner Management</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="pet-management.html" id="petManagement" style="background-color: #ff8400">
+                            <i class='bx bxs-cat icon' style="color: #fff"></i>
+                            <span class="text nav-text" style="color: #fff">Pet Management</span>
+                        </a>
+                    </li>
+                    <li class="nav-link notifBtn">
+                        <a href="notification.html" id="notification" >
+                            <i class='bx bx-bell icon' ></i>
+                            <span class="text nav-text">Notification</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="about-us.html" id="aboutUs" >
+                            <i class='bx bx-info-circle icon'></i>
+                            <span class="text nav-text">About Us</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a id="accountManagement" class="" href="account-management.html">
+                            <i class='bx bx-group icon'></i>
+                            <span class="text nav-text">Account Management</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="bottom-content">
+                <li class="nav-link">
+                    <a href="user-settings.html">
+                        <i class='bx bx-user-circle icon' ></i>
+                        <span class="text nav-text" id="userFullName"></span>
+                    </a>
+                </li>
+
+                <li class="nav-link">
+                    <a onclick="logout()">
+                        <i class='bx bx-log-out icon'></i>
+                        <span class="text nav-text ">Logout</span>
+                    </a>
+                </li>
+            </div>
+        </div>
+    </nav>
+
+    <section class="home">
+        <div class="text">Pet Management</div>
+        <main class="table">
+            <section class="table_header">
+                <h1 id="petRecords">Pet Records</h1>
+                <div class="input-group">
+                    <input type="search" placeholder="Search..." id="searchBar">
+                    <img src="search.png" alt="search" onclick="search()"  style="cursor: pointer;">
+                </div>
+                <!-- <div class="button_container">
+                    <button id="searchBtn" onclick="searchFunction()">Search</button> -->
+                    <!-- <button onclick="getAppointments()">Appointments</button> -->
+                    <!-- <button onclick="openAddPetFormModal()">Add Record</button> -->
+                </div>
+            </section>
+            <section class="table_body">
+                <table id="pets-table">
+                    <thead>
+                        <tr>
+                            <th>ID <span class="icon-arrow">&UpArrow;</span></th>
+                            <th>Owner <span class="icon-arrow">&UpArrow;</span></th>
+                            <th>Pet Name <span class="icon-arrow">&UpArrow;</span></th>
+                            <th>Birth Date <span class="icon-arrow">&UpArrow;</span></th>
+                            <th>Species <span class="icon-arrow">&UpArrow;</span></th> 
+                            <th>Breed <span class="icon-arrow">&UpArrow;</span></th>
+                            <th>Sex <span class="icon-arrow">&UpArrow;</span></th>
+                            <!-- <th>Appointment Count <span class="icon-arrow">&UpArrow;</span></th> -->
+                            <th>Action</th>
+                        </tr>
+                    </thead>        
+                    <tbody id="pets">
+                    </tbody>
+                </table>
+            </section>
+        </main>
+        
+        <main>
+            <div class="petEntries">
+                <!-- Add Pet form modal -->
+                <div id="add-pet-form-modal" class="modal petEntryModal addModal">
+                    <div class="modal-content">
+                        <!-- <span class="close" onclick="closeAddPetFormModal()">&times;</span> -->
+                        <div class="modalHeader">
+                            <span class="close" onclick="closeAddPetFormModal()">&times;</span>
+                            <h2>Add Pet</h2>
+                        </div>
+                        <div class="modalContent">
+                            <label for="petName">Name:</label>
+                            <input type="text" id="petName" placeholder="Enter pet name" required>
+                
+                            <label for="petBirthDate">Birth Date:</label>
+                            <input type="date" id="petBirthDate" placeholder="Enter pet birth date" required>
+                
+                            <label for="petBreed">Breed:</label>
+                            <input type="text" id="petBreed" placeholder="Enter pet breed" required>
+                
+                            <label for="petSpecies">Species:</label> 
+                            <input type="text" id="petSpecies" placeholder="Enter pet species" required> 
+                
+                            <label for="petOwner">Owner Name:</label>
+                            <input type="text" id="petOwner" placeholder="Enter owner name" required>
+
+                            <label for="petSex">Sex:</label>
+                            <select name="" id="petSex">
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                            </select>
+                        </div>
+                        <div class="modalFooter">
+                            <button onclick="addPet()">Confirm</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Update Pet form modal -->
+                <div id="update-pet-form-modal" class="modal petEntryModal updateModal">
+                    <div class="modal-content">
+                        <div class="modalHeader">
+                            <span class="close" onclick="closeUpdatePetFormModal()">&times;</span>
+                            <h2>Update Pet<h2 id="updatePetHeaderName"></h2></h2>
+                        </div>
+                        <div class="modalContent">
+                            <input type="hidden" name="" id="upetId" class="updateInput">
+                            <label for="upetName">Name:</label>
+                            <input type="text" id="upetName" class="updateInput"  placeholder="Enter pet name" required>
+                            <span class="alertPetName" style="color:red; font-size: 0.8rem"></span>
+                
+                            <br>
+                            <label for="upetBirthDate">Birth Date:</label>
+                            <input type="date" id="upetBirthDate" placeholder="Enter pet birth date" required>
+                            <span class="alertBirthDate" style="color:red; font-size: 0.8rem"></span>
+                
+                            <br>
+                            <label for="upetBreed">Breed:</label>
+                            <input type="text" id="upetBreed" class="updateInput" placeholder="Enter pet breed" required>
+                            <span class="alertPetBreed" style="color:red; font-size: 0.8rem"></span>
+                
+                            <br>
+                            <label for="upetSpecies">Species:</label> 
+                            <input type="text" id="upetSpecies" class="updateInput"  placeholder="Enter pet species" required> 
+                            <span class="alertPetSpecies" style="color:red; font-size: 0.8rem"></span>
+                
+                            <br>
+                            <label for="upetOwner">Owner Name:</label>
+                            <input type="text" id="upetOwner" disabled style="cursor: arrow" class="updateInput">
+
+                            <label for="upetSex">Sex:</label>
+                            <select name="" id="upetSex">
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                            </select>
+                        </div>
+                        <div class="modalFooter">
+                            <button onclick="updatePet()">Confirm</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="appointmentDetails">
+                <div class="appointmentEntries">
+                    <!-- View Pet Modal -->
+                    <div id="view-pet-modal" class="modal appointmentEntry appointmentModal">
+                        <div class="modalHeader">
+                            <h1 id="view-pet-details">Records of <span id="petHeaderName"></span></h1>
+                            <div class="input-group">
+                                <input type="search" placeholder="Search..." id="searchBarAppointment">
+                                <img src="search.png" alt="search">
+                            </div>
+                            
+                            <input type="hidden" name="" id="hiddenId">
+                            <input type="hidden" name="" id="hpetSex">
+                            
+                            <div id="add-button-container" class="modalSubHeader">
+                                <span id="view-pet-close" class="close" onclick="closeViewPetModal()">&times;</span>
+                                <button onclick="openAddAppointmentModal()" >Create Record</button>
+                            </div>
+                            
+                            <!--  -->
+                        </div>
+                        <div class="modal-content">
+                            <!-- Appointment History Section -->
+                            <div class="modal-section">
+                                <h3>Records List</h3>
+                                <div class="sortingSection">
+                                    <span>Year:</span>
+                                    <input type="number" id="year" min="2000" max="2050" step="1" placeholder="YYYY">
+                                    <span>Month:</span>
+                                    <Select id="month">
+                                        <option value="01">01</option>
+                                        <option value="02">02</option>
+                                        <option value="03">03</option>
+                                        <option value="04">04</option>
+                                        <option value="05">05</option>
+                                        <option value="06">06</option>
+                                        <option value="07">07</option>
+                                        <option value="08">08</option>
+                                        <option value="09">09</option>
+                                        <option value="10">10</option>
+                                        <option value="11">11</option>
+                                        <option value="12">12</option>
+                                    </Select>
+                                    <button class="sortDate" onclick="sortBtn()">Sort</button>
+                                    <button class="resetDate" onclick="resetDate()">Reset</button>
+                                </div>
+                                <!-- Display the appointment history here -->
+                                <ul id="appointment-history-list" class="appointmentHistory"></ul>
+                                <div id="appointmentList" class="appointmentSection" onclick="selectAppointment()"></div>
+                            </div>
+                        
+                            <!-- Owner Details Section -->
+                            <!-- <div class="modal-section">
+                                <h3>Owner</h3>
+                                <p id="owner-details"></p>
+                                <div id="ownerDetails"></div>
+                            </div> -->
+                        
+                            <!-- Pet Details Section -->
+                            <div class="modal-section">
+                                <h3>Client Data Information</h3>
+                                <!-- Display the pet details here -->
+                                <p id="pet-details"></p>
+                                <div id="petDetails"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <button onclick="showPet()">Show Pet</button> -->
+                </div>
+    
+    
+                <!-- Add Appointment form modal -->
+                <div id="add-appointment-modal" class="modal appointmentForm">
+                    <div class="modal-content">
+                        
+                        <div id="add-button-container" class="modalSubHeader">
+                            <span class="close" onclick="closeAddAppointmentModal()">&times;</span>
+                        </div>
+                        <div class="modalHeader">
+                            <h1>Create Record for <span id="petHeaderName1"></span></h1>
+                        </div>
+                            <div class="container">
+                                <div>
+                                    <label for="vetOnDuty">User On Duty:</label>
+                                    <input type="text" id="vetOnDuty" disabled>
+                                    <br>
+                                    <br>
+                                    <label for="complaint">Complaint/History:</label>
+                                    <br>
+                                    <textarea name="" id="complaint" cols="30" rows="5" required></textarea>
+                                    <br>
+                                    <br>
+                                    <label for="generalAssessment">General Assessment:</label>
+                                    <br>
+                                    <textarea name="" id="generalAssessment" cols="30" rows="5" required></textarea>
+                                    <br>
+                                </div>
+                                <div>
+                                    <label for="bodyWt">Body Wt:</label>
+                                    <input type="text" id="bodyWt" required>
+                                    <br>
+                                    <br>
+                                    <label for="diagnosticTool">Diagnosis:</label>
+                                    <br>
+                                    <textarea name="" id="diagnosticTool" cols="30" rows="5" required></textarea>
+                                    <br>
+                                    <br>
+                                    <label for="medicationTreatment">Medication/Treatment:</label>
+                                    <br>
+                                    <textarea name="" id="medicationTreatment" cols="30" rows="5" required></textarea>
+                                    <br>
+                                    <br>
+                                    <label for="checkUpVisit">Set an Appointment:</label>
+                                    <br>
+                                    <input type="datetime-local" id="checkUpVisit" required>
+                                </div>
+                                <div>
+                                    <label for="temp">Temp:</label>
+                                    <input type="text" id="temp" required>
+                                    <br>
+                                    <br>
+                                    <label for="laboratoryFindings">Laboratory/Findings:</label>
+                                    <br>
+                                    <textarea name="" id="laboratoryFindings" cols="30" rows="5" required></textarea>
+                                    <br>
+                                    <br>
+                                    <label for="remarks">Remarks:</label>
+                                    <br>
+                                    <textarea name="" id="remarks" cols="30" rows="5" required></textarea>
+                                </div>
+                            </div>  
+                            <!-- Add other input fields for the remaining details -->
+                            <br>
+                            <button onclick="addAppointment()">Add</button>
+                    </div>
+                </div>
+
+                <!-- <div class="allAppointmentEntries">
+                    <div id="view-pet-modal" class="modal appointmentEntry appointmentModal">
+                        <div class="modalHeader">
+                            <h1 id="view-pet-details">Appointments</h1>
+                            <div class="input-group">
+                                <input type="search" placeholder="Search..." id="searchBarAllAppointment">
+                                <img src="search.png" alt="search">
+                            </div>
+                            
+                            <div id="add-button-container" class="modalSubHeader">
+                                <span id="view-pet-close" class="close" onclick="closeAllAppointmentEntries()">&times;</span>
+                            </div>
+                            
+                        </div>
+                        <div class="modal-content">
+                            <div class="modal-section">
+                                <h3>Appointment History</h3>
+                                <div class="sortingSection">
+                                    <span>Year:</span>
+                                    <input type="number" id="yearAll" min="2000" max="2050" step="1" placeholder="YYYY">
+                                    <span>Month:</span>
+                                    <Select id="monthAll">
+                                        <option value="01">01</option>
+                                        <option value="02">02</option>
+                                        <option value="03">03</option>
+                                        <option value="04">04</option>
+                                        <option value="05">05</option>
+                                        <option value="06">06</option>
+                                        <option value="07">07</option>
+                                        <option value="08">08</option>
+                                        <option value="09">09</option>
+                                        <option value="10">10</option>
+                                        <option value="11">11</option>
+                                        <option value="12">12</option>
+                                    </Select>
+                                    <button class="sortDate" onclick="sortAllBtn()">Sort</button>
+                                    <button class="resetDate" onclick="resetAllDate()">Reset</button>
+                                </div>
+                                <div id="allAppointmentList" class="allAppointmentSection" onclick="selectAppointment()"></div>
+                            </div>
+                            <div class="modal-section">
+                                <h3>Pet Details</h3>
+                                <div id="allPetDetails"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+        </main>
+    </section>
+        
+    
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.5.3/dist/web3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js" integrity="sha384-NaWTHo/8YCBYJ59830LTz/P4aQZK1sS0SneOgAvhsIl3zBu8r9RevNg5lHCHAuQ/" crossorigin="anonymous"></script>
+    <script src="navbar.js"></script>
+    <script src="pet-management.js"></script>
+</body>
+</html>

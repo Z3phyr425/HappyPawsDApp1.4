@@ -1,0 +1,78 @@
+main.table{
+    width: 98.9%;
+    height: 55vh;
+    background-color: #fff5;
+    margin: 0.5rem;
+  
+    box-shadow: 0 .4rem .8rem #0005;
+    border-radius: .8rem;
+    overflow: hidden;
+  }
+  
+.container {
+    width: 100%;;
+    margin: 20px auto;
+    text-align: center;
+}
+.container *{
+    scale: 1.1;
+}
+
+.member {
+    display: inline-block;
+    width: 200px;
+    height: 300px; 
+    margin: 20px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+.member:hover {
+    transform: scale(1.1); 
+}
+
+.member img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.member h2 {
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.member p {
+    color: #666;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.member:nth-child(1) {
+    animation: fadeInUp 0.5s ease 0.3s both;
+}
+
+.member:nth-child(2) {
+    animation: fadeInUp 0.5s ease 0.6s both;
+}
+
+.member:nth-child(3) {
+    animation: fadeInUp 0.5s ease 0.9s both;
+}
+
+.member:nth-child(4) {
+    animation: fadeInUp 0.5s ease 1.2s both;
+}

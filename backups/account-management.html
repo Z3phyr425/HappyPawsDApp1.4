@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.5.3/dist/web3.min.js"></script>
+    <script src="eth.js"></script>
+    <script src="main.js"></script>
+    <script src="acc-management.js"></script>
+    <title>Account Management - HappyPaws</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .action-buttons button {
+            margin-right: 5px;
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fefefe;
+            padding: 20px;
+            border: 1px solid #ddd;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            z-index: 1;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Ganache Accounts</h1>
+    <table id="accounts-table">
+        <thead>
+            <tr>
+                <th>Account Index</th>
+                <th>Account Address</th>
+                <th>Full Name</th>
+                <th>Age</th>
+                <th>Role</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <!-- Update form modal -->
+    <div id="update-form-modal" class="modal">
+        <span class="close" onclick="closeUpdateFormModal()">&times;</span>
+        <h2>Update Account</h2>
+        <p id="account-address-info"></p>
+        <form id="update-account-form">
+            <label for="new-full-name">New Full Name:</label>
+            <input type="text" id="new-full-name" required>
+            <label for="new-age">New Age:</label>
+            <input type="number" id="new-age" required>
+            <label for="new-role">New Role:</label>
+            <input type="text" id="new-role" required>
+            <button type="submit">Update</button>
+        </form>
+    </div>
+</body>
+</html>

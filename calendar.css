@@ -1,0 +1,159 @@
+
+.calendarContainer{
+  width: 140vh;
+  margin: 0.5rem;
+}
+
+.calendarContainer h1 {
+  font-weight: 600;
+  text-align: center;
+  color: #fff;
+  margin-bottom: 2rem;
+}
+.calendarContainer h3 {
+  font-weight: 600;
+}
+.calendar {
+  width: 100%;
+  height: 90vh;
+  background-color: #fff5;
+  border-radius: 10px;
+  box-shadow: 0 .4rem .8rem #0005;
+}
+.calendar header {
+  padding: 1rem;
+  background-color: #fff4;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.calendar nav {
+  display: flex;
+  align-items: center;
+}
+.calendar section{
+  padding: 1rem;
+}
+.calendar section .days{
+  border-bottom: 2px solid #fff;
+  margin-top: -1rem;
+  font-size: 2rem;
+}
+.calendar section .days li{
+  border-collapse: separate;
+}
+.calendar ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+}
+.calendar ul li {
+  width: calc(100% / 7);
+  margin-top: 25px;
+  position: relative;
+  z-index: 2;
+}
+#prev,
+#next {
+  width: 20px;
+  height: 20px;
+  position: relative;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+#prev::before,
+#next::before {
+  content: "";
+  width: 50%;
+  height: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-style: solid;
+  border-width: 0.25em 0.25em 0 0;
+  border-color: #ccc;
+}
+#next::before {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+#prev::before {
+  transform: translate(-50%, -50%) rotate(-135deg);
+}
+#prev:hover::before,
+#next:hover::before {
+  border-color: #000;
+}
+.days {
+  font-weight: 600;
+}
+.dates li{
+  height: 9vh;
+  font-size: 3vh;
+}
+.dates li.today {
+  color: #fff;
+}
+
+.dates li.highlight {
+  color: #fff;
+}
+
+.dates li.today::before {
+  content: "";
+  width: 4rem;
+  height: 4rem;
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #ff8400;
+  color: #fff;
+  border-radius: 50%;
+  z-index: -1;
+}
+
+.dates li.today.highlight::before{
+  content: "";
+  width: 3rem;
+  height: 3rem;
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #ff8400;
+  border-radius: 50%;
+  z-index: -2;
+}
+
+.dates li.highlight::before{
+  content: "";
+  width: 3rem;
+  height: 3rem;
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #ff840066;
+  border-radius: 50%;
+  z-index: -2;
+}
+
+.dates li.done::before{
+  content: "";
+  width: 3rem;
+  height: 3rem;
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #72675b66;
+  border-radius: 50%;
+  z-index: -2;
+}
+
+
+.dates li.inactive {
+  color: #ccc;
+}

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Owner Management - HappyPaws</title>
+    <link rel="stylesheet" href="owner-management.css">
+    <link rel="stylesheet" href="navbar.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <nav class="sidebar close">
+        <header>
+            <div class="image-text" onclick="goTo()">
+                <span class="image">
+                    <img src="LOGO.png" alt="logo">
+                </span>
+                <div class="text header-text">
+                    <span class="name">Vatan Happy Paws</span>
+                    <span class="profession">Veterenary Hospital</span>
+                </div>
+            </div>
+            <i class='bx bx-chevron-right toggle'></i>
+        </header>
+
+        <div class="menu-bar">
+            <div class="menu">
+                <ul class="menu-links">
+                    <li class="nav-link">
+                        <a href="main.html" id="main">
+                            <i class="bx bx-home-alt icon"></i>
+                            <span class="text nav-text">Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="owner-management.html" id="ownerManagement" style="background-color: #ff8400">
+                            <i class='bx bxs-user-badge icon' style="color: #fff"></i>
+                            <span class="text nav-text" style="color: #fff">Owner Management</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="pet-management.html" id="petManagement" >
+                            <i class='bx bxs-cat icon' ></i>
+                            <span class="text nav-text">Pet Management</span>
+                        </a>
+                    </li>
+                    <li class="nav-link notifBtn">
+                        <a href="notification.html" id="notification" >
+                            <i class='bx bx-bell icon' ></i>
+                            <span class="text nav-text">Notification</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="about-us.html" id="aboutUs" >
+                            <i class='bx bx-info-circle icon'></i>
+                            <span class="text nav-text">About Us</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a id="accountManagement" href="account-management.html">
+                            <i class='bx bx-group icon'></i>
+                            <span class="text nav-text">Account Management</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="bottom-content">
+                <li class="nav-link">
+                    <a href="user-settings.html">
+                        <i class='bx bx-user-circle icon' ></i>
+                        <span class="text nav-text" id="userFullName"></span>
+                    </a>
+                </li>
+
+                <li class="nav-link">
+                    <a onclick="logout()">
+                        <i class='bx bx-log-out icon'></i>
+                        <span class="text nav-text ">Logout</span>
+                    </a>
+                </li>
+            </div>
+        </div>
+    </nav>
+
+    <section class="home">
+        <div class="text">Owner Management</div>
+        <main class="table">
+            <section class="table_header">
+                <h1>Owner Records: <span id="ownerRecords"></span></h1>
+                <div class="input-group">
+                    <input type="search" placeholder="Search..." id="searchBar">
+                    <img src="search.png" alt="search" onclick="search()"  style="cursor: pointer;">
+                </div>
+                <div class="button_container">
+                    <button onclick="openAddOwnerFormModal()">Add Record</button>
+                </div>
+            </section>
+            <section class="table_body">
+                <table id="owners-table">
+                    <thead>
+                        <tr>
+                            <th>ID <span class="icon-arrow">&UpArrow;</span></th>
+                            <th>Full Name <span class="icon-arrow">&UpArrow;</span></th>
+                            <th>Contact Number <span class="icon-arrow">&UpArrow;</span></th>
+                            <th>Email <span class="icon-arrow">&UpArrow;</span></th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>        
+                    <tbody id="owners">
+                    </tbody>
+                </table>
+            </section>
+        </main>
+        
+        <main>
+            <div class="ownerEntries">
+                <div id="add-owner-form-modal" class="modal ownerEntryModal addModal">
+                    <div class="modal-content">
+                        <div class="modalHeader">
+                            <span class="close" onclick="closeAddOwnerFormModal()">&times;</span>
+                            <h2>Add Owner</h2>
+                        </div>
+                        <div class="modalContent">
+                            <label for="surname">Surname:</label>
+                            <input type="text" id="surname" placeholder="Enter surname" required>
+                            <span class="alertSurname" style="color:red; font-size: 0.8rem"></span>
+                
+                            <label for="firstName">First Name:</label>
+                            <input type="text" id="firstName" placeholder="Enter first name" required>
+                            <span class="alertFirstname" style="color:red; font-size: 0.8rem"></span>
+                
+                            <label for="contactNumber">Contact Number:</label> 
+                            <input type="text" id="contactNumber" placeholder="Enter contact number" required>
+                            <span class="alertContact" style="color:red; font-size: 0.8rem"></span>
+
+                            <label for="email">Email:</label> 
+                            <input type="text" id="email" placeholder="Enter email address" required>
+                        </div>
+                        <div class="modalFooter">
+                            <button onclick="addOwner()">Confirm</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="update-owner-form-modal" class="modal ownerEntryModal updateModal">
+                    <div class="modal-content">
+                        <div class="modalHeader">
+                            <span class="close" onclick="closeUpdateOwnerFormModal()">&times;</span>
+                            <h2>Update Owner<h2 id="updateOwnerHeaderName"></h2></h2>
+                        </div>
+                        <div class="modalContent">
+                            <input type="hidden" id="uhiddenId">
+                            <label for="usurname">Surname:</label>
+                            <input type="text" id="usurname" placeholder="Enter surname" required>
+                            <span class="alertUpdateSurname" style="color:red; font-size: 0.8rem"></span>
+                            
+                
+                            <label for="ufirstName">First Name:</label>
+                            <input type="text" id="ufirstName" placeholder="Enter first name" required>
+                            <span class="alertUpdateFirstname" style="color:red; font-size: 0.8rem"></span>
+                            
+                
+                            <label for="ucontactNumber">Contact Number:</label> 
+                            <input type="text" id="ucontactNumber" placeholder="Enter contact Number" required>
+                            <span class="alertUpdateContact" style="color:red; font-size: 0.8rem"></span>
+                            
+
+                            <label for="uemail">Email:</label> 
+                            <input type="text" id="uemail" placeholder="Enter email address" required>
+
+                        </div>
+                        <div class="modalFooter">
+                            <button onclick="updateOwner()">Confirm</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="add-pet-form-modal" class="modal petEntryModal addPetModal">
+                    <div class="modal-content">
+                        <!-- <span class="close" onclick="closeAddPetFormModal()">&times;</span> -->
+                        <div class="modalHeader">
+                            <span class="close" onclick="closeAddPetFormModal()">&times;</span>
+                            <h2>Add Pet</h2>
+                        </div>
+                        <div class="modalContent">
+                            <input type="hidden" id="hiddenOwnerId">
+                            <label for="petName">Name:</label>
+                            <input type="text" id="petName" placeholder="Enter pet name" required>
+                            <span class="alertPetName" style="color:red; font-size: 0.8rem"></span>
+                
+                            <label for="petBirthDate">Birth Date:</label>
+                            <input type="date" id="petBirthDate" placeholder="Enter pet birth date" required>
+                            <span class="alertBirthDate" style="color:red; font-size: 0.8rem"></span>
+                
+                            <label for="petBreed">Breed:</label>
+                            <input type="text" id="petBreed" placeholder="Enter pet breed" required>
+                            <span class="alertPetBreed" style="color:red; font-size: 0.8rem"></span>
+                
+                            <label for="petSpecies">Species:</label> 
+                            <input type="text" id="petSpecies" placeholder="Enter pet species" required>
+                            <span class="alertPetSpecies" style="color:red; font-size: 0.8rem"></span>
+                
+                            <label for="petOwner">Owner Name:</label>
+                            <input type="text" id="petOwner" placeholder="" disabled style="cursor: arrow">
+
+                            <label for="petSex">Sex:</label>
+                            <select name="" id="petSex">
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                            </select>
+                        </div>
+                        <div class="modalFooter">
+                            <button onclick="addPet()">Confirm</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </section>
+        
+    
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.5.3/dist/web3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js" integrity="sha384-NaWTHo/8YCBYJ59830LTz/P4aQZK1sS0SneOgAvhsIl3zBu8r9RevNg5lHCHAuQ/" crossorigin="anonymous"></script>
+    <script src="navbar.js"></script>
+    <script src="owner-management.js"></script>
+</body>
+</html>

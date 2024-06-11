@@ -1,0 +1,210 @@
+/* Import Google font - Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+
+}
+body{
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-size:cover;
+  background-position: top;
+  background-image: url("dog.jpg");
+}
+.container{
+  position: absolute;
+  top: 56%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  max-width: 430px;
+  background: transparent;
+  backdrop-filter: blur(0.5rem);
+  width: 100%;
+  border-radius: 7px;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+}
+.container .registration{
+  display: none;
+}
+#check:checked ~ .registration{
+  display: block;
+}
+#check:checked ~ .login{
+  display: none;
+}
+#check{
+  display: none;
+}
+.container .form{
+  padding: 2rem;
+}
+.registration form{
+  height: max-content;
+  margin-top: -30px;
+}
+.form header{
+  text-align: center;
+  margin-bottom: 5rem;
+}
+.form img{
+  position: absolute;
+  top: -120px;
+  right: 25%;
+  height: 200px;
+  width: 200px;
+}
+.form input{
+  height: 55px;
+  width: 100%;
+  padding: 0 15px;
+  font-size: 17px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  outline: none;
+  margin: 0.5rem;
+ }
+ .form input:focus{
+  box-shadow: 0 1px 0 rgba(0,0,0,0.2);
+ }
+ .registration form input{
+  height: 50px;
+  width: 100%;
+  padding: 0 15px;
+  font-size: 17px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  outline: none;
+ }
+ .fregistration form input:focus{
+  box-shadow: 0 1px 0 rgba(0,0,0,0.2);
+}
+.form a{
+  font-size: 16px;
+  color: #ff6500;
+  text-decoration: none;
+}
+.form a:hover{
+  text-decoration: underline;
+}
+.form input.button{
+  color: white;
+  background: #ff6500;
+  font-size: 1.2rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+  margin-top: 1.7rem;
+  cursor: pointer;
+  transition: 0.4s;
+}
+.form input.button:hover{
+  background: #7a3100;
+}
+.signup{
+  font-size: 17px;
+  text-align: center;
+  color: white;
+}
+.signup label{
+  color: #ff6500;
+  cursor: pointer;
+}
+.signup label:hover{
+  text-decoration: underline;
+}
+
+#alert{
+  color: red;
+  display: none;
+}
+#ch{
+  display: flex;
+  align-items: center;
+  width: max-content;
+  height: max-content;
+  cursor: pointer;
+}
+section #pcheckBox{
+  width: 1.5rem;
+  margin: 0 0.5rem;
+  cursor: pointer;
+}
+
+section input{
+  cursor: pointer;
+}
+
+.showReg{
+  display: none;
+}
+
+.showReg.active{
+  display: block;
+}
+
+#forgot{
+  position: absolute;
+  transform: translateY(-55%);
+  right: 7%;
+  color: rgb(20, 57, 239);
+  cursor: pointer;
+}
+
+.alertUser, .alertPassword{
+  display: none;
+}
+
+.alertUser.active, .alertPassword.active{
+  display: flex;
+  justify-content: start;
+  margin-left: 1rem;
+  color: red;
+}
+
+.alertUser .icon, .alertPassword .icon{
+  display: flex;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.alertMsg{
+  margin-left: 0.25rem;
+}
+
+/* signup validation */
+
+.cAlertUser, 
+.cAlertPassword, 
+.cAlertSurname, 
+.cAlertFirstName, 
+.cAlertAddress, 
+.cAlertContact{
+  display: none;
+}
+
+.cAlertUser.active, 
+.cAlertPassword.active, 
+.cAlertSurname.active, 
+.cAlertFirstName.active, 
+.cAlertAddress.active, 
+.cAlertContact.active{
+  display: flex;
+  justify-content: start;
+  margin-left: 1rem;
+  color: red;
+
+}
+
+.cAlertUser .icon, 
+.cAlertPassword .icon, 
+.cAlertSurname .icon, 
+.cAlertFirstName .icon, 
+.cAlertAddress .icon, 
+.cAlertContact .icon{
+  display: flex;
+  margin-top: auto;
+  margin-bottom: auto;
+}

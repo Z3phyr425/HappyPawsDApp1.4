@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HappyPaws - Your Pet's Best Companion</title>
+    <link rel="stylesheet" href="notification.css">
+    <link rel="stylesheet" href="navbar.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+   
+</head>
+<body>
+   
+    <nav class="sidebar close">
+        <header>
+            <div class="image-text" onclick="goTo()">
+                <span class="image">
+                    <img src="LOGO.png" alt="logo">
+                </span>
+                <div class="text header-text">
+                    <span class="name">Vatan Happy Paws</span>
+                    <span class="profession">Veterenary Hospital</span>
+                </div>
+            </div>
+            <i class='bx bx-chevron-right toggle'></i>
+        </header>
+
+        <div class="menu-bar">
+            <div class="menu">
+                <ul class="menu-links">
+                    <li class="nav-link">
+                        <a href="main.html" id="main">
+                            <i class="bx bx-home-alt icon"></i>
+                            <span class="text nav-text">Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="owner-management.html" id="ownerManagement" >
+                            <i class='bx bxs-user-badge icon' ></i>
+                            <span class="text nav-text">Owner Management</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="pet-management.html" id="petManagement" >
+                            <i class='bx bxs-cat icon' ></i>
+                            <span class="text nav-text">Pet Management</span>
+                        </a>
+                    </li>
+                    <li class="nav-link notifBtn">
+                        <a href="notification.html" id="notification" style="background-color: #ff8400">
+                            <i class='bx bx-bell icon' style="color: #fff"></i>
+                            <span class="text nav-text" style="color: #fff">Notification</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="about-us.html" id="aboutUs" >
+                            <i class='bx bx-info-circle icon'></i>
+                            <span class="text nav-text">About Us</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a id="accountManagement" href="account-management.html">
+                            <i class='bx bx-group icon'></i>
+                            <span class="text nav-text">Account Management</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="bottom-content">
+                <li class="nav-link">
+                    <a href="user-settings.html">
+                        <i class='bx bx-user-circle icon' ></i>
+                        <span class="text nav-text" id="userFullName"></span>
+                    </a>
+                </li>
+
+                <li class="nav-link">
+                    <a onclick="logout()">
+                        <i class='bx bx-log-out icon'></i>
+                        <span class="text nav-text ">Logout</span>
+                    </a>
+                </li>
+            </div>
+        </div>
+    </nav>
+
+    <section class="home">
+        <div class="text">Notification</div>
+        <main class="appointmentList">
+            <section class="mainHeader">
+                <h1>Todays Appointments<span id="todaysAppointmentRecords"></span></h1>
+            </section>
+            <section class="mainContent">
+                <div id="appointments">
+                    <h1 class="noApp">No Appointments For Today</h1>
+                </div>
+            </section>
+            <section class="mainFooter"></section>
+        </main>
+        <main class="allAppList">
+            <section class="mainHeader">
+                <h1>All Appointments<span id="allApp"></span></h1>
+                <div class="input-group">
+                    <input type="search" placeholder="Search..." id="searchBar">
+                    <img src="search.png" alt="search" onclick="search()"  style="cursor: pointer;">
+                </div>
+            </section>
+            <section class="mainContent">
+                <div id="allAppointments" >
+                    <h1 class="noAllApp">No Appointments Found</h1>
+                </div>
+            </section>
+            <section class="mainFooter"></section>
+        </main>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.5.3/dist/web3.min.js"></script>
+    <script src="notification.js"></script>
+    <script src="navbar.js"></script>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - Happy Paws</title>
+  <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://trusted-cdn.com"> -->
+  <link rel="stylesheet" href="login.css">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <script src="https://cdn.jsdelivr.net/npm/web3@1.5.3/dist/web3.min.js"></script>
+  <script src="index.js"></script>
+</head>
+<body>
+
+  <div class="imag"></div>
+  <div class="container">
+  <input type="checkbox" id="check">
+    <div id="loginContainer" class="login form">
+      <header><img src="LOGO.png" alt=""></header>
+      <form>
+        <div>
+          <input type="text" id="username" placeholder="Enter your username">
+          <div class="alertContainer alertUser">
+            <i class='bx bxs-info-circle icon' id="userIcon"></i>
+            <span id="userMsg" class="alertMsg"></span>
+          </div>
+        </div>
+        <div>
+          <input type="password" name="" placeholder="Enter your password" id="password">
+          <div class="alertContainer alertPassword">
+            <i class='bx bxs-info-circle icon' id="passwordIcon"></i>
+            <span id="passwordMsg" class="alertMsg"></span>
+          </div>
+        </div>
+        <section id="ch">
+          <input type="checkbox" id="pcheckBox"><span for="showPassword">Show Password</span>
+        </section>
+        <!-- <span onclick="forgotPassword()" id="forgot">Forgot Password?</span> -->
+        <input type="button" id="loginButton" class="button" value="Login">
+      </form>
+      <div class="signup" id="signup">
+        <span class="signup showReg" id="ask">Don't have an account?
+          <label for="check">Create Admin</label>
+        </span>
+      </div>
+    </div>
+    <div class="registration form">
+      <header><img src="LOGO.png" alt=""></header>
+      <form>
+
+        <div>
+          <input type="text" name="" id="createUsername" placeholder="Enter your username" required>
+          <div class="cAlertUser">
+            <i class='bx bxs-info-circle icon'></i>
+            <span class="alertMsg" id="cUserMsg"></span>
+          </div>
+        </div>
+
+        <div>
+          <input type="password" id="createPassword" placeholder="Enter your password" required>
+          <input type="password" id="confirmPassword" placeholder="Confirm password" required>
+          <div class="cAlertPassword">
+            <i class='bx bxs-info-circle icon'></i>
+            <span id="cPasswordMsg" class="alertMsg">Password mismatch</span>
+          </div>
+        </div>
+
+        <div>
+          <input type="text" id="surname" placeholder="Enter your surname" required>
+          <div class="cAlertSurname">
+            <i class='bx bxs-info-circle icon'></i>
+            <span class="alertMsg" id="cSurnameMsg"></span>
+          </div>
+        </div>
+
+        <div>
+          <input type="text" id="firstname" placeholder="Enter your first name" required>
+          <div class="cAlertFirstName">
+            <i class='bx bxs-info-circle icon'></i>
+            <span class="alertMsg" id="cFirstNameMsg"></span>
+          </div>
+        </div>
+
+        <div>
+          <input type="text" id="address" placeholder="Address" required>
+          <div class="cAlertAddress">
+            <i class='bx bxs-info-circle icon'></i>
+            <span class="alertMsg" id="cAddressMsg"></span>
+          </div>
+        </div>
+
+        <div>
+          <input type="text" id="contact" placeholder="Contact Number" required>
+          <div class="cAlertContact">
+            <i class='bx bxs-info-circle icon'></i>
+            <span class="alertMsg" id="cContactMsg"></span>
+          </div>
+        </div>
+
+          <div class="signup">
+            <span class="signup">Want to go back?</span>
+            <label for="check">Click Here</label>
+          </div>
+        <input type="button" id="createAdminButton" class="button" value="Confirm">
+      </form>
+    </div>
+  </div>
+
+  
+</body>
+</html>
